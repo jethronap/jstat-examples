@@ -15,12 +15,12 @@ public class Example5 {
         final double STD = 0.3;
 
         AbstractRealDistribution normalDistribution = new NormalDistribution(MU, STD);
-        List<Double> values = ListUtils.randomSample(SIZE, normalDistribution);
+        /*List<Double> values = ListUtils.randomSample(SIZE, normalDistribution);
         DescriptiveStatistics stats = new DescriptiveStatistics(ListUtils.toDoubleArray(values));
 
         System.out.println("Mean is: "+ stats.getMean());
         System.out.println("Median is: "+stats.getPercentile(50));
         System.out.println("Min is: "+stats.getMin());
-        System.out.println("Max is: "+stats.getMax());
+        System.out.println("Max is: "+stats.getMax());*/
     }
 }

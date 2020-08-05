@@ -22,7 +22,7 @@ public class Example8 {
         final int N_SIMS = 1000;
         List<Double> avg = new ArrayList<>(N_SIMS);
 
-        for(int i =0; i <N_SIMS; ++i){
+        /*for(int i =0; i <N_SIMS; ++i){
 
             List<Integer> sample = ListUtils.randomSample(i+1,
                     new UniformIntegerDistribution(1,6));
@@ -36,6 +36,6 @@ public class Example8 {
                 CSVFileWriter writer = new CSVFileWriter(new String(path + "/" + "averages" + i + ".csv"));
                 writer.writeDoubleRow(avg);
             }
-        }
+        }*/
     }
 }

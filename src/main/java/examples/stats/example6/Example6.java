@@ -17,8 +17,8 @@ public class Example6 {
         final double STD = 0.3;
         final double ALPHA = 0.05;
 
-        AbstractRealDistribution normalDistribution = new NormalDistribution(MU, STD);
-        List<Double> values = ListUtils.randomSample(SIZE, normalDistribution);
+        AbstractRealDistribution normalDistribution = null; //new NormalDistribution(MU, STD);
+        /*List<Double> values = ListUtils.randomSample(SIZE, normalDistribution);
 
         AbstractRealDistribution standardNormalDistribution = new NormalDistribution();
 
@@ -83,6 +83,6 @@ public class Example6 {
         }
         else{
             System.out.println("With p-value " + p_value + " and significance level " + ALPHA + " cannot reject H0");
-        }
+        }*/
     }
 }

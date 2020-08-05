@@ -41,7 +41,7 @@ public class Example8 {
                 }
             }
 
-        ConfusionMatrix confusionMatrix = new ConfusionMatrix(actual, predicted, N_CLASSES);
+        /*ConfusionMatrix confusionMatrix = new ConfusionMatrix(actual, predicted, N_CLASSES);
 
         // let's compute some metrics
         System.out.println("TP: "+confusionMatrix.getClassCounts(1));
@@ -56,7 +56,7 @@ public class Example8 {
         System.out.println("Precision: " + (double)confusionMatrix.getClassCounts(1)/
                 (double) (confusionMatrix.getClassCountsAsOtherClass(0,1) + confusionMatrix.getClassCounts(1)));
         System.out.println("Prevalence: " + (double)(confusionMatrix.getClassCountsAsOtherClass(1,0) +
-                confusionMatrix.getClassCounts(1))/(double) confusionMatrix.totalCount());
+                confusionMatrix.getClassCounts(1))/(double) confusionMatrix.totalCount());*/
 
 
     }

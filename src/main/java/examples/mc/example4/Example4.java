@@ -28,7 +28,7 @@ public class Example4 {
             pos.add(0.0);
         }
 
-        CSVFileWriter writer = new CSVFileWriter(CommonConstants.mcExamplesPath()+"/example4/positions.csv");
+        /*CSVFileWriter writer = new CSVFileWriter(CommonConstants.mcExamplesPath()+"/example4/positions.csv");
         writer.writeColumnNames("ITERATION", "POSITION");
         pos.set(0, 2.0);
 
@@ -50,6 +50,6 @@ public class Example4 {
             }
 
             writer.writeRow(i, pos.get(i));
-        }
+        }*/
     }
 }
