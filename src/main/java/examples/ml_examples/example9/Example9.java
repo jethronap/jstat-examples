@@ -1,7 +1,8 @@
-package examples.ml.example9;
+package examples.ml_examples.example9;
 
 import org.nd4j.linalg.api.ndarray.INDArray;
-import ml.HiddenMarkovModel;
+import ml.models.HiddenMarkovModel;
+import ml.models.HMMConfig;
 import org.nd4j.linalg.factory.Nd4j;
 
 public class Example9 {
@@ -19,8 +20,11 @@ public class Example9 {
         // create the initialization vector
         INDArray pi = Nd4j.zeros(nRows);
 
+        HMMConfig config = new HMMConfig();
         // the Hidden Markov Model
-        HiddenMarkovModel hmm = new HiddenMarkovModel(A, B, pi);
+        HiddenMarkovModel hmm = new HiddenMarkovModel(config);
+
+        //hmm.viterbi()
 
 
 

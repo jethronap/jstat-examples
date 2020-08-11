@@ -1,4 +1,4 @@
-package examples.ml.example1;
+package examples.ml_examples.example1;
 
 import dataloader.CsvDataLoader;
 

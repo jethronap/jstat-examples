@@ -1,4 +1,4 @@
-package examples.ml.example5;
+package examples.ml_examples.example5;
 
 import utils.DefaultIterativeAlgorithmController;
 import base.CommonConstants;

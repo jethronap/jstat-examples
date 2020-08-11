@@ -1,4 +1,4 @@
-package examples.ml.example3;
+package examples.ml_examples.example3;
 
 import datasets.DenseMatrixSet;
 import datasets.VectorDouble;

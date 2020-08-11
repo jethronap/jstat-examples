@@ -1,4 +1,4 @@
-package examples.ml.example8;
+package examples.ml_examples.example8;
 
 import maths.ConfusionMatrix;
 import java.util.ArrayList;

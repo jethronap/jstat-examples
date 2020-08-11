@@ -1,4 +1,4 @@
-package examples.ml.example7;
+package examples.ml_examples.example7;
 
 import datasets.VectorDouble;
 import optimization.GradientDescent;
