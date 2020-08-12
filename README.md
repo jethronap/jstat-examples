@@ -14,6 +14,9 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 - <a href="src/main/java/examples/ml/example6/example.md">Example 6</a>: Logistic classification
 - <a href="src/main/java/examples/ml/Example7/example.md">Example 7</a>: Linear regression with regularization ```LassoRegularizer``` and ```RidgeRegularizer```
 - <a href="src/main/java/examples/ml/example8/example.md">Example 8</a>: Classification performance assessment using the ```ConfusionMatrix``` class
+- <a href="src/main/java/examples/ml_examples/example10/exe.ipynb">Example 10</a>: Forward Algorithm
+- <a href="src/main/java/examples/ml_examples/example11/exe.ipynb">Example 11</a>: Backward Algorithm
+- <a href="src/main/java/examples/ml_examples/example12/exe.ipynb">Example 12</a>: Viterbi Algorithm
 
 ### Optimization
 
