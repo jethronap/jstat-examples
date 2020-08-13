@@ -51,4 +51,7 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 - <a href="src/main/java/examples/plotting/example5/example.md">Example 5</a>: Scatter plot
 
 ### Miscellaneous
-- <a href="src/main/java/examples/es/example1/example.md">Example 1</a>: Load data from an Elasticsearch index
+
+- <a href="src/main/java/examples/miscellaneous/example1/example.md">Example 1</a>: Basic operations with ```INDArray```
+- <a href="src/main/java/examples/miscellaneous/example2/example.md">Example 2</a>: Load data from an Elasticsearch index
+

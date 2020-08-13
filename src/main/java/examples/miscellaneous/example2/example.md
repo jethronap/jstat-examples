@@ -1,4 +1,4 @@
-# Example 1: Load data from an Elasticsearch index
+# Example: Load data from an Elasticsearch index
 
 ## Contents
 * [Overview](#overview)    
@@ -83,7 +83,7 @@ import org.elasticsearch.search.SearchHits;
 import java.io.IOException;
 import java.util.Map;
 
-public class Example1 {
+public class Example {
 
     public static final String INDEX =  "jstat_es_example_1";
 
