@@ -1,8 +1,11 @@
-package examples.ml_examples.example11;
+package examples.ml_examples.example12;
 
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-import ml.models.HMMHelpers;
+
+import jstat.ml.models.HMMConfig;
+import jstat.ml.models.HiddenMarkovModel;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,30 +40,37 @@ public class Example12 {
         // create the initialization vector
         INDArray pi = Nd4j.create(new double[]{0.6, 0.4});
 
-        // create a sequence of observations
-        List<String> sequence = new ArrayList<String>();
-        sequence.add("a");
-        sequence.add("b");
-        sequence.add("c");
-
         // map the sequnce observation to a column index
         Map<String, Integer> obsToIdx = new HashMap<>();
-        obsToIdx.put("a", 0);
-        obsToIdx.put("b", 1);
-        obsToIdx.put("c", 2);
+        obsToIdx.put("normal", 0);
+        obsToIdx.put("cold",  1);
+        obsToIdx.put("dizzy", 2);
 
-        // compute alpha
-        INDArray beta = HMMHelpers.backward(sequence, A, B, pi, obsToIdx);
+        List<String> stateNames = new ArrayList<>();
+        stateNames.add("Healthy");
+        stateNames.add("Fever");
 
-        System.out.println("beta matrix: ");
-        System.out.println(beta);
+        HMMConfig config = new HMMConfig();
+        config.A = A;
+        config.B = B;
+        config.pi = pi;
+        config.obsToIdx = obsToIdx;
+        config.states = stateNames;
 
-        // we can now calculate the probability
-        double p = 0.0;
-        for(int i=0; i<A.shape()[0]; ++i){
-            p += pi.getDouble(0, i)*B.getDouble(i, obsToIdx.get(sequence.get(0)))*beta.getDouble(1, i);
+        HiddenMarkovModel hmm = new HiddenMarkovModel(config);
+
+        // create a sequence of observations
+        List<String> sequence = new ArrayList<String>();
+        sequence.add("normal");
+        sequence.add("cold");
+        sequence.add("dizzy");
+
+
+        INDArray states = hmm.viterbi(sequence);
+
+        for(int i=0; i<states.size(0); ++i){
+            System.out.println(config.states.get(states.getInt(i)));
         }
 
-        System.out.println("probability: " + p);
     }
 }
