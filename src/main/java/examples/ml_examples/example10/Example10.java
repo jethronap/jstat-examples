@@ -2,7 +2,7 @@ package examples.ml_examples.example10;
 
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-import ml.models.HMMHelpers;
+import jstat.ml.models.HMMHelpers;
 
 import java.util.ArrayList;
 import java.util.HashMap;

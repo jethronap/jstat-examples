@@ -2,6 +2,8 @@ package examples.stats.example1;
 import datasets.VectorDouble;
 import datastructs.IVector;
 import org.apache.commons.math3.stat.StatUtils;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
 import stats.utils.Resample;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -32,28 +34,28 @@ public class Example1 {
         final double SD = 0.1;
 
         // create a sample
-        VectorDouble sample = new VectorDouble(SIZE);
+        INDArray sample = Nd4j.zeros(SIZE);
 
         // normal distribution:
         // see https://commons.apache.org/proper/commons-math/javadocs/api-3.5/org/apache/commons/math3/distribution/NormalDistribution.html
         NormalDistribution dist = new NormalDistribution(MU, SD);
 
         for(int i=0; i<SIZE; ++i){
-            sample.add(i, dist.sample());
+            sample.putScalar(i, dist.sample());
         }
 
-        System.out.println("Sample mean: "+sample.getMean());
-        System.out.println("Sample variance: "+sample.getVar());
-        System.out.println("Mean variance: "+sample.getVar()/sample.size());
+        System.out.println("Sample mean: "+Nd4j.mean(sample));
+        System.out.println("Sample variance: "+Nd4j.var(sample));
+        System.out.println("Mean variance: "+Nd4j.var(sample).getDouble(0)/sample.size(0));
 
         double[] means = new double[BOOST_ITRS];
 
         // Iterate
-        for(int itr=0; itr<BOOST_ITRS; ++itr){
+        /*for(int itr=0; itr<BOOST_ITRS; ++itr){
 
             IVector<Double> resample = Resample.resample(sample, RESAMPLE_SIZE, 3);
             means[itr] = ((VectorDouble)resample).getMean();
-        }
+        }*/
 
         // compute the mean of means
         double mean = StatUtils.mean(means);

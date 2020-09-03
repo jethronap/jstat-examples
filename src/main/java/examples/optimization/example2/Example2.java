@@ -1,6 +1,6 @@
 package examples.optimization.example2;
 
-import datasets.VectorDouble;
+/*import datasets.VectorDouble;
 import optimization.GradientDescent;
 import utils.DefaultIterativeAlgorithmController;
 import utils.IterativeAlgorithmResult;
@@ -13,7 +13,7 @@ import maths.errorfunctions.MSEVectorFunction;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
-import utils.*;
+import utils.*;*/
 
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class Example2 {
 
-        public static Pair<DenseMatrixSet, VectorDouble> loadNormalizedDataSet(File file)throws IOException{
+        /*public static Pair<DenseMatrixSet, VectorDouble> loadNormalizedDataSet(File file)throws IOException{
 
             // load the data
             Table dataSet = TableDataSetLoader.loadDataSet(file);
@@ -63,11 +63,11 @@ public class Example2 {
             System.out.println("Apache OLS: ");
             System.out.println("Intercept: "+coeffs[0]+" slope1: "+coeffs[1]+" slope2: "+coeffs[2]);
 
-        }
+        }*/
 
         public static void main(String[] args)throws IOException {
 
-            Pair<DenseMatrixSet, VectorDouble> dataSet = Example2.loadNormalizedDataSet(new File("src/main/resources/datasets/car_plant_multi.csv"));
+            /*Pair<DenseMatrixSet, VectorDouble> dataSet = Example2.loadNormalizedDataSet(new File("src/main/resources/datasets/car_plant_multi.csv"));
 
             System.out.println(" ");
             // compute with Apache OLS for reference
@@ -85,7 +85,7 @@ public class Example2 {
 
             System.out.println(" ");
             System.out.println(result);
-            System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope1: "+hypothesis.getCoeff(1)+" slope2: "+hypothesis.getCoeff(2));
+            System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope1: "+hypothesis.getCoeff(1)+" slope2: "+hypothesis.getCoeff(2));*/
 
         }
 }

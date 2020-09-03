@@ -3,18 +3,18 @@ package examples.ml_examples.example7;
 import datasets.VectorDouble;
 import optimization.GradientDescent;
 import optimization.GDInput;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
 import utils.DefaultIterativeAlgorithmController;
 import utils.IterativeAlgorithmResult;
-import datasets.DenseMatrixSet;
-import datastructs.RowBuilder;
-import datastructs.RowType;
-import maths.errorfunctions.MSEVectorFunction;
-import maths.functions.LinearVectorPolynomial;
 
-import maths.functions.regularizers.LassoRegularizer;
-import maths.functions.regularizers.RidgeRegularizer;
 
-import ml.regression.LinearRegressor;
+import jstat.maths.errorfunctions.MSEVectorFunction;
+import jstat.maths.functions.LinearVectorPolynomial;
+import jstat.maths.functions.regularizers.LassoRegularizer;
+import jstat.maths.functions.regularizers.RidgeRegularizer;
+import jstat.ml.regression.LinearRegressor;
+
 import tech.tablesaw.api.DoubleColumn;
 import tech.tablesaw.api.Table;
 
@@ -35,22 +35,22 @@ import java.io.IOException;
 
 public class Example7 {
 
-    public static Pair<DenseMatrixSet, VectorDouble> createDataSet() throws IOException, IllegalArgumentException {
+    public static Pair<INDArray, INDArray> createDataSet() throws IOException, IllegalArgumentException {
 
         // load the data
         Table dataSetTable = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/X_Y_Sinusoid_Data.csv"));
 
         DoubleColumn y  = dataSetTable.doubleColumn("y");
 
-        VectorDouble labels = new VectorDouble(y);
+        /*INDArray labels = Nd4j.create((Double) y.asList().toArray(), 1); //new VectorDouble(y);
 
         Table reducedDataSet = dataSetTable.removeColumns("y").first(dataSetTable.rowCount());
-        DenseMatrixSet dataSet = new DenseMatrixSet(RowType.Type.DOUBLE_VECTOR, new RowBuilder(), reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1, 1.0);
-        dataSet.setColumn(1, reducedDataSet.doubleColumn(0));
-        return PairBuilder.makePair(dataSet, labels);
+        INDArray dataSet = Nd4j.zeros(reducedDataSet.rowCount(), reducedDataSet.columnCount() + 1); //, 1.0);
+        dataSet.setColumn(1, reducedDataSet.doubleColumn(0));*/
+        return PairBuilder.makePair(null, null);
     }
 
-    public static void linearRegression(DenseMatrixSet data, VectorDouble labels){
+    public static void linearRegression(INDArray data, INDArray labels){
 
         System.out.println("Doing LinearRegression");
 
@@ -59,26 +59,26 @@ public class Example7 {
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
         gdInput.eta = 0.01;
-        gdInput.errF = new MSEVectorFunction(hypothesis);
+        gdInput.errF = null; //new MSEVectorFunction(hypothesis);
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(100000,1.0e-8);
 
         // the optimizer
         GradientDescent gdSolver = new GradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
+        /*IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+
-                " slope1: "+hypothesis.getCoeff(1));
+                " slope1: "+hypothesis.getCoeff(1));*/
 
     }
 
-    public static void ridgeRegression(DenseMatrixSet data, VectorDouble labels){
+    public static void ridgeRegression(INDArray data, INDArray labels){
 
         System.out.println("Doing Ridge LinearRegression");
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
@@ -87,26 +87,26 @@ public class Example7 {
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
         gdInput.eta = 0.01;
-        gdInput.errF = new MSEVectorFunction(hypothesis, ridgeRegularizer);
+        gdInput.errF = null; //new MSEVectorFunction(hypothesis, ridgeRegularizer);
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(100000,1.0e-8);
 
         // the optimizer
         GradientDescent gdSolver = new GradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
+        /*IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+
-                " slope1: "+hypothesis.getCoeff(1));
+                " slope1: "+hypothesis.getCoeff(1));*/
 
     }
 
-    public static void lassoRegression(DenseMatrixSet data, VectorDouble labels){
+    public static void lassoRegression(INDArray data, INDArray labels){
 
         System.out.println("Doing Lasso LinearRegression");
         LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
@@ -115,36 +115,36 @@ public class Example7 {
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
         gdInput.eta = 0.01;
-        gdInput.errF = new MSEVectorFunction(hypothesis, lassoRegularizer);
+        gdInput.errF = null; //new MSEVectorFunction(hypothesis, lassoRegularizer);
         gdInput.iterationContorller = new DefaultIterativeAlgorithmController(100000,1.0e-8);
 
         // the optimizer
         GradientDescent gdSolver = new GradientDescent(gdInput);
 
         // the classifier
-        LinearRegressor<DenseMatrixSet<Double>> regressor = new LinearRegressor(hypothesis);
+        LinearRegressor regressor = new LinearRegressor(hypothesis);
 
         // train the model
-        IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
+        /*IterativeAlgorithmResult result = (IterativeAlgorithmResult) regressor.train(data, labels, gdSolver);
 
         System.out.println(" ");
         System.out.println(result);
         System.out.println("Intercept: "+hypothesis.getCoeff(0)+
-                " slope1: "+hypothesis.getCoeff(1));
+                " slope1: "+hypothesis.getCoeff(1));*/
 
     }
 
 
     public static void main(String[] args) throws IOException, IllegalArgumentException{
 
-        Pair<DenseMatrixSet, VectorDouble> data = Example7.createDataSet();
+        Pair<INDArray, INDArray> data = Example7.createDataSet();
 
-        System.out.println("Number of rows: "+data.first.m());
-        System.out.println("Number of labels: "+data.second.size());
+        System.out.println("Number of rows: "+data.first.size(0));
+        System.out.println("Number of labels: "+data.second.size(0));
 
-        Example7.linearRegression(data.first, data.second);
-        Example7.ridgeRegression(data.first, data.second);
-        Example7.lassoRegression(data.first, data.second);
+        //Example7.linearRegression(data.first, data.second);
+        //Example7.ridgeRegression(data.first, data.second);
+        //Example7.lassoRegression(data.first, data.second);
 
 
     }

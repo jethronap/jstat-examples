@@ -1,6 +1,6 @@
 package examples.optimization.example1;
 
-import datasets.VectorDouble;
+/*import datasets.VectorDouble;
 import utils.DefaultIterativeAlgorithmController;
 import utils.IterativeAlgorithmResult;
 import optimization.GradientDescent;
@@ -11,7 +11,7 @@ import datastructs.RowType;
 import maths.functions.LinearVectorPolynomial;
 import maths.errorfunctions.MSEVectorFunction;
 import tech.tablesaw.api.Table;
-import utils.TableDataSetLoader;
+import utils.TableDataSetLoader;*/
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class Example1 {
     public static void main(String[] args)throws IOException {
 
         // load the data
-        Table dataSet = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/car_plant.csv"));
+        /*Table dataSet = TableDataSetLoader.loadDataSet(new File("src/main/resources/datasets/car_plant.csv"));
 
         VectorDouble labels = new VectorDouble(dataSet, "Electricity Usage");
         Table reducedDataSet = dataSet.removeColumns("Electricity Usage").first(dataSet.rowCount());
@@ -50,7 +50,7 @@ public class Example1 {
         IterativeAlgorithmResult result = gdSolver.optimize(denseMatrixSet, labels, hypothesis);
 
         System.out.println(result);
-        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));
+        System.out.println("Intercept: "+hypothesis.getCoeff(0)+" slope: "+hypothesis.getCoeff(1));*/
 
     }
 }

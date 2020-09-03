@@ -1,8 +1,8 @@
 package examples.ml_examples.example9;
 
 import org.nd4j.linalg.api.ndarray.INDArray;
-import ml.models.HiddenMarkovModel;
-import ml.models.HMMConfig;
+import jstat.ml.models.HiddenMarkovModel;
+import jstat.ml.models.HMMConfig;
 import org.nd4j.linalg.factory.Nd4j;
 
 public class Example9 {

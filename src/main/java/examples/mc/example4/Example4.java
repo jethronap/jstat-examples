@@ -1,7 +1,7 @@
 package examples.mc.example4;
 
 import base.CommonConstants;
-import io.CSVFileWriter;
+import jstat.io.CSVFileWriter;
 import org.apache.commons.math3.distribution.AbstractRealDistribution;
 import org.apache.commons.math3.distribution.NormalDistribution;
 

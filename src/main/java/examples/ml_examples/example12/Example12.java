@@ -65,7 +65,6 @@ public class Example12 {
         sequence.add("cold");
         sequence.add("dizzy");
 
-
         INDArray states = hmm.viterbi(sequence);
 
         for(int i=0; i<states.size(0); ++i){
