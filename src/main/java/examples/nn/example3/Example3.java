@@ -45,28 +45,65 @@ public class Example3 {
     public static File featuresDirTrain = new File(baseTrainDir, "features");
     public static File labelsDirTrain = new File(baseTrainDir, "labels");
     public static int miniBatchSize = 1;
-    public static int  numLabelClasses = 1;
+    public static int  numLabelClasses = 2;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
 
         try{
 
             Example3 exe = new Example3();
-            DataSetIterator data = exe.load_data();
+            DataSetIterator trainData = exe.load_train_data();
 
-            System.out.println(data.inputColumns());
-            DataSet set = data.next(0);
+            System.out.println(trainData.inputColumns());
+            DataSet set = trainData.next(0);
 
+            System.out.println("Features...");
             System.out.println(set.getFeatures());
+            System.out.println("Features shape: " + set.getFeatures().shape());
+
+            System.out.println("Labels...");
             System.out.println(set.getLabels());
+
+
+            // ----- Configure the network -----
+            MultiLayerConfiguration conf = new NeuralNetConfiguration.Builder()
+                    .seed(123)    //Random number generator seed for improved repeatability. Optional.
+                    .weightInit(WeightInit.XAVIER)
+                    .updater(new Nadam())
+                    .gradientNormalization(GradientNormalization.ClipElementWiseAbsoluteValue)
+                    .gradientNormalizationThreshold(0.5)
+                    .list()
+                    .layer(new LSTM.Builder().activation(Activation.TANH).nIn(10).nOut(10).build())
+                    .layer(new RnnOutputLayer.Builder(LossFunctions.LossFunction.MCXENT)
+                            .activation(Activation.SOFTMAX).nIn(10).nOut(numLabelClasses).build())
+                    .build();
+
+            MultiLayerNetwork net = new MultiLayerNetwork(conf);
+            net.init();
+
+            int nEpochs = 40;
+            net.fit(trainData, nEpochs);
+
+            /*log.info("Starting training...");
+            net.setListeners(new ScoreIterationListener(20),
+                             new EvaluativeListener(testData, 1, InvocationType.EPOCH_END)); */  //Print the score (loss function value) every 20 iterations
+
+
+
+            //log.info("Evaluating...");
+            //Evaluation eval = net.evaluate(testData);
+            //log.info(eval.stats());
+
+            //log.info("----- Example Complete -----");
         }
         catch (Exception e){
             System.out.println("An Exception occurred: ");
             System.out.println("Exception message: " + e.getMessage());
+            throw e;
         }
     }
 
-    private DataSetIterator load_data() throws Exception{
+    private DataSetIterator load_train_data() throws Exception{
 
         trainFeatures = new CSVSequenceRecordReader(0, ",");
         trainFeatures.initialize(new NumberedFileInputSplit(featuresDirTrain.getAbsolutePath() + "/features_%d.csv",
