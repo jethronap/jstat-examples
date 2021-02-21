@@ -1,10 +1,17 @@
 package examples.ml_examples.example1;
 
-import dataloader.CsvDataLoader;
+import jstat.dataloader.CSVDataLoader;
+import jstat.base.Configuration;
+import jstat.ml.regression.LinearRegressor;
+import jstat.ml.trainers.SupervisedTrainer;
+import jstat.optimization.GradientDescent;
+import jstat.optimization.GDInput;
+import jstat.maths.errorfunctions.MSEFunction;
 
-
+import jstat.utils.Pair;
+import org.nd4j.linalg.api.ndarray.INDArray;
 import tech.tablesaw.api.Table;
-import visualizations.ScatterChart;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -14,26 +21,33 @@ public class Example1 {
 
     public static  void main(String[] args ) throws IOException {
 
-        /*File file = new File("data/car_plant.csv");
-        Table table = CsvDataLoader.TableLoader.parseFile(file);
+        File dataSetFile = new File("/home/alex/qi3/jstat/src/main/resources/jstat/datasets/car_plant.csv");
+        Configuration.dataDirectory = dataSetFile;
 
-        // let's plot the data
-        ScatterChart plotter = new ScatterChart();
-        ScatterChart.ScatterChartOptions options = plotter.new ScatterChartOptions();
-        options.chartTitle = "Production vs Electricity Usage";
-        options.xAxisName = "Production";
-        options.yAxisName = "Electricity Usage";
+        Pair<INDArray, INDArray> dataSet = CSVDataLoader.loadCarPlant();
 
-        ScatterChart.plotScatter(options, table);
+        // the object that represents the
+        // linear regression model
+        LinearRegressor regression = new LinearRegressor(1);
 
-        Simple1DLinearRegression regression = new Simple1DLinearRegression();
-        regression.fit(table, "Production", "Electricity Usage");
+        // since we do linear regression we will use
+        // mean square error as the loss function
+        MSEFunction mse = new MSEFunction(regression);
 
-        double[] coeffs = regression.getCoeffs();
-        double intercept = regression.getIntercept();
-        System.out.println("Regression coefficients. Intercept: "+intercept+" Slope: "+coeffs[0]);
+        GDInput gdInput = new GDInput();
+
+        // we will use gradient descent here
+        GradientDescent gd = new GradientDescent(gdInput);
+
+        SupervisedTrainer trainer = new SupervisedTrainer(regression, gd, mse, 10, 1.0e-5);
+        trainer.train(dataSet.first, dataSet.second);
 
 
-        //TODO embed the regression line into the Scatter plot somehow*/
+        //double[] coeffs = regression.getCoeffs();
+        //double intercept = regression.getIntercept();
+        //System.out.println("Regression coefficients. Intercept: "+intercept+" Slope: "+coeffs[0]);
+
+
+
     }
 }
