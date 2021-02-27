@@ -1,6 +1,6 @@
 package examples.stats.example8;
 
-import io.CSVFileWriter;
+import jstat.io.CSVFileWriter;
 import org.apache.commons.math3.distribution.UniformIntegerDistribution;
 import stats.Statistics;
 import utils.ListUtils;

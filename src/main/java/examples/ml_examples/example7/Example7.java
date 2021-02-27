@@ -9,7 +9,7 @@ import utils.DefaultIterativeAlgorithmController;
 import utils.IterativeAlgorithmResult;
 
 
-import jstat.maths.errorfunctions.MSEVectorFunction;
+import jstat.maths.errorfunctions.MSEFunction;
 import jstat.maths.functions.LinearVectorPolynomial;
 import jstat.maths.functions.regularizers.LassoRegularizer;
 import jstat.maths.functions.regularizers.RidgeRegularizer;
@@ -54,7 +54,7 @@ public class Example7 {
 
         System.out.println("Doing LinearRegression");
 
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1, true);
 
         GDInput gdInput = new GDInput();
         gdInput.showIterations = false;
@@ -81,7 +81,7 @@ public class Example7 {
     public static void ridgeRegression(INDArray data, INDArray labels){
 
         System.out.println("Doing Ridge LinearRegression");
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1, true);
         RidgeRegularizer ridgeRegularizer = new RidgeRegularizer(0.001, 1, hypothesis);
 
         GDInput gdInput = new GDInput();
@@ -109,7 +109,7 @@ public class Example7 {
     public static void lassoRegression(INDArray data, INDArray labels){
 
         System.out.println("Doing Lasso LinearRegression");
-        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1);
+        LinearVectorPolynomial hypothesis = new LinearVectorPolynomial(1, true);
         LassoRegularizer lassoRegularizer = new LassoRegularizer(0.0001, 1, hypothesis);
 
         GDInput gdInput = new GDInput();

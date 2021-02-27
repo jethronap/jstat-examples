@@ -8,10 +8,10 @@ import jstat.optimization.GradientDescent;
 import jstat.optimization.GDInput;
 import jstat.maths.errorfunctions.MSEFunction;
 
+import jstat.optimization.OLSOptimizer;
 import jstat.utils.Pair;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import tech.tablesaw.api.Table;
-
+import org.nd4j.linalg.factory.Nd4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,20 +21,21 @@ public class Example1 {
 
     public static  void main(String[] args ) throws IOException {
 
-        File dataSetFile = new File("/home/alex/qi3/jstat/src/main/resources/jstat/datasets/car_plant.csv");
-        Configuration.dataDirectory = dataSetFile;
+        Configuration.dataDirectory = "/home/alex/qi3/jstat/src/main/resources/jstat/datasets/";
 
-        Pair<INDArray, INDArray> dataSet = CSVDataLoader.loadCarPlant();
+        Pair<INDArray, INDArray> dataSet = CSVDataLoader.loadCarPlantWithIntercept();
 
         // the object that represents the
         // linear regression model
-        LinearRegressor regression = new LinearRegressor(1);
+        LinearRegressor regression = new LinearRegressor(1, true);
 
         // since we do linear regression we will use
         // mean square error as the loss function
         MSEFunction mse = new MSEFunction(regression);
 
         GDInput gdInput = new GDInput();
+        gdInput.lossFunction = mse;
+        gdInput.parameters = regression.getParameters();
 
         // we will use gradient descent here
         GradientDescent gd = new GradientDescent(gdInput);
@@ -42,12 +43,13 @@ public class Example1 {
         SupervisedTrainer trainer = new SupervisedTrainer(regression, gd, mse, 10, 1.0e-5);
         trainer.train(dataSet.first, dataSet.second);
 
+        System.out.println("GD Optimization Coefficients "+ regression.getCoeffs());
 
-        //double[] coeffs = regression.getCoeffs();
-        //double intercept = regression.getIntercept();
-        //System.out.println("Regression coefficients. Intercept: "+intercept+" Slope: "+coeffs[0]);
-
-
+        // do an ordinary least squares to check the solution
+        INDArray params = Nd4j.zeros(2);
+        OLSOptimizer olsOptimizer = new OLSOptimizer(params);
+        olsOptimizer.step(dataSet.first, dataSet.second);
+        System.out.println("OLS Optimization coefficients "+ params);
 
     }
 }
