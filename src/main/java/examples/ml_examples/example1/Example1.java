@@ -36,11 +36,12 @@ public class Example1 {
         GDInput gdInput = new GDInput();
         gdInput.lossFunction = mse;
         gdInput.parameters = regression.getParameters();
+        gdInput.eta = 0.01;
 
         // we will use gradient descent here
         GradientDescent gd = new GradientDescent(gdInput);
 
-        SupervisedTrainer trainer = new SupervisedTrainer(regression, gd, mse, 10, 1.0e-5);
+        SupervisedTrainer trainer = new SupervisedTrainer(regression, gd, mse, 50, 1.0e-5);
         trainer.train(dataSet.first, dataSet.second);
 
         System.out.println("GD Optimization Coefficients "+ regression.getCoeffs());
