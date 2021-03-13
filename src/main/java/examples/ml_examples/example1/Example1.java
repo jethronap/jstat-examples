@@ -12,8 +12,6 @@ import jstat.optimization.OLSOptimizer;
 import jstat.utils.Pair;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
-
-import java.io.File;
 import java.io.IOException;
 
 public class Example1 {
@@ -21,8 +19,10 @@ public class Example1 {
 
     public static  void main(String[] args ) throws IOException {
 
+        // set the data directory
         Configuration.dataDirectory = "/home/alex/qi3/jstat/src/main/resources/jstat/datasets/";
 
+        // load data set
         Pair<INDArray, INDArray> dataSet = CSVDataLoader.loadCarPlantWithIntercept();
 
         // the object that represents the
