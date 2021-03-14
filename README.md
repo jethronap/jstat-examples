@@ -6,14 +6,14 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 
 ### Machine Learning 
 
-- <a href="src/main/java/examples/ml/example1/Example1.java">Example 1</a>: Linear regression
-- <a href="src/main/java/examples/ml/example2/Example2.java">Example 2</a>: Non-linear regression
-- <a href="src/main/java/examples/ml/example3/Example3.java">Example 3</a>: Classification with vanilla KNN algorithm
-- <a href="src/main/java/examples/ml/example4/example.md">Example 4</a>: KNN Classification with multiple threads
-- <a href="src/main/java/examples/ml/example5/example.md">Example 5</a>: Clustering with KMeans
-- <a href="src/main/java/examples/ml/example6/example.md">Example 6</a>: Logistic classification
-- <a href="src/main/java/examples/ml/Example7/example.md">Example 7</a>: Linear regression with regularization ```LassoRegularizer``` and ```RidgeRegularizer```
-- <a href="src/main/java/examples/ml/example8/example.md">Example 8</a>: Classification performance assessment using the ```ConfusionMatrix``` class
+- <a href="src/main/java/examples/ml_examples/example1/Example1.java">Example 1</a>: Linear regression
+- <a href="src/main/java/examples/ml_examples/example2/Example2.java">Example 2</a>: Non-linear regression
+- <a href="src/main/java/examples/ml_examples/example3/Example3.java">Example 3</a>: Classification with vanilla KNN algorithm
+- <a href="src/main/java/examples/ml_examples/example4/example.md">Example 4</a>: KNN Classification with multiple threads
+- <a href="src/main/java/examples/ml_examples/example5/example.md">Example 5</a>: Clustering with KMeans
+- <a href="src/main/java/examples/ml_examples/example6/example.md">Example 6</a>: Logistic classification
+- <a href="src/main/java/examples/ml_examples/Example7/example.md">Example 7</a>: Linear regression with regularization ```LassoRegularizer``` and ```RidgeRegularizer```
+- <a href="src/main/java/examples/ml_examples/example8/example.md">Example 8</a>: Classification performance assessment using the ```ConfusionMatrix``` class
 - <a href="src/main/java/examples/ml_examples/example10/exe.ipynb">Example 10</a>: Forward Algorithm
 - <a href="src/main/java/examples/ml_examples/example11/exe.ipynb">Example 11</a>: Backward Algorithm
 - <a href="src/main/java/examples/ml_examples/example12/exe.ipynb">Example 12</a>: Viterbi Algorithm
