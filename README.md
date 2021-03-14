@@ -6,9 +6,9 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 
 ### Machine Learning 
 
-- <a href="src/main/java/examples/ml/example1/example.md">Example 1</a>: Linear regression
-- <a href="src/main/java/examples/ml/example2/example.md">Example 2</a>: Non-linear regression
-- <a href="src/main/java/examples/ml/example3/example.md">Example 3</a>: Classification with vanilla KNN algorithm
+- <a href="src/main/java/examples/ml/example1/Example1.java">Example 1</a>: Linear regression
+- <a href="src/main/java/examples/ml/example2/Example2.java">Example 2</a>: Non-linear regression
+- <a href="src/main/java/examples/ml/example3/Example3.java">Example 3</a>: Classification with vanilla KNN algorithm
 - <a href="src/main/java/examples/ml/example4/example.md">Example 4</a>: KNN Classification with multiple threads
 - <a href="src/main/java/examples/ml/example5/example.md">Example 5</a>: Clustering with KMeans
 - <a href="src/main/java/examples/ml/example6/example.md">Example 6</a>: Logistic classification
@@ -18,11 +18,7 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 - <a href="src/main/java/examples/ml_examples/example11/exe.ipynb">Example 11</a>: Backward Algorithm
 - <a href="src/main/java/examples/ml_examples/example12/exe.ipynb">Example 12</a>: Viterbi Algorithm
 
-### Optimization
-
-- <a href="src/main/java/examples/optimization/example1/example.md">Example 1</a>: Gradient descent with one feature 
-- <a href="src/main/java/examples/optimization/example2/example.md">Example 2</a>: Gradient descent with two features 
-
+ 
 ### Statistics
 
 - <a href="src/main/java/examples/stats/example1/example.md">Example 1</a>: Vanilla Bootstrap for the mean
@@ -42,13 +38,6 @@ Examples of using <a href="https://github.com/jethronap/jstat"> jstat</a>
 - <a href="src/main/java/examples/mc/example3/example.md">Example 3</a>: Markov chain Monte Carlo for pi calculation
 - <a href="src/main/java/examples/mc/example4/example.md">Example 4</a>: The Metropolis algorithm
 
-### Plotting
-
-- <a href="src/main/java/examples/plotting/example1/example.md">Example 1</a>: Bar plot
-- <a href="src/main/java/examples/plotting/example2/example.md">Example 2</a>: Histogram plot
-- <a href="src/main/java/examples/plotting/example3/example.md">Example 3</a>: Line plot
-- <a href="src/main/java/examples/plotting/example4/example.md">Example 4</a>: Pie plot
-- <a href="src/main/java/examples/plotting/example5/example.md">Example 5</a>: Scatter plot
 
 ### Miscellaneous
 
